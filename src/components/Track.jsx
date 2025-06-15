@@ -1,11 +1,12 @@
 import React from "react";
 
-function Track(){
+function Track({track}){
 
     return(
-        <div>
-
-        </div>
+        <div className="Track">
+      <h3>{track.name}</h3>
+      <p>{track.artist} | {track.album}</p>
+    </div>
     );
 }
 
