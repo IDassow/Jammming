@@ -1,11 +1,11 @@
 import React from 'react';
 import Tracklist from './Tracklist';
 
-function Playlist({ playlistName, playlistTracks, onRemove }) {
+function Playlist({ playlistName, changeName, playlistTracks, onRemove }) {
    return (
     <div className="Playlist">
-      <input defaultValue={playlistName} />
-      <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
+      <input defaultValue={playlistName} onChange={changeName}/>
+      <Tracklist tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
       <button>Save to Spotify</button>
     </div>
   );

@@ -21,10 +21,9 @@ function App() {
       return prev.filter((item) => (item.name === input || item.album === input || item.artist === input));
     });
   };
-
-  const removeItem = (targetIndex) => {
-    setPlaylist((prev) => {
-      return prev.filter((item, index) => index !== targetIndex);
+  const changePlaylistName = (input) => {
+    setPlaylistName(() => {
+       input;
     });
   };
 
@@ -41,9 +40,10 @@ function App() {
   return (
     <>
       <SearchBar value={userInput} onChange={handleUserInput}/>
-      <div>
+      <div style={{display:'inlineFlex'}}>
         <SearchResult tracks={searchResults}  onAdd={addTrack}/>
-        <Playlist playlistName={playlistName}
+        <Playlist playlistName={playlistName} 
+          changeName={changePlaylistName}
           playlistTracks={playlist}
           onRemove={removeTrack}/>
       </div>

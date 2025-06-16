@@ -3,7 +3,7 @@ import TrackList from './Tracklist';
 
 function SearchResults({ tracks }) {
   return (
-    <div className="SearchResults">
+    <div className="SearchResults" >
       <h2>Results</h2>
       <TrackList tracks={tracks} />
     </div>

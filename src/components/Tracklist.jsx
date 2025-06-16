@@ -3,7 +3,7 @@ import Track from './Track';
 
 function TrackList({ tracks, onRemove, isRemoval }) {
   return (
-    <div className="TrackList">
+    <div className="TrackList" style={{display:'flex', alignContent:"space-evenly", flexWrap:"wrap"}}>
       {tracks.map(track => (
         <Track
           key={track.id}
