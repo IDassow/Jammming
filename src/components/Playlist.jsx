@@ -1,12 +1,14 @@
-import React from "react";
+import React from 'react';
+import Tracklist from './Tracklist';
 
-function Playlist(){
-
-    return(
-        <div>
-            <h1>Playlist</h1>
-        </div>
-    );
+function Playlist({ playlistName, playlistTracks, onRemove }) {
+   return (
+    <div className="Playlist">
+      <input defaultValue={playlistName} />
+      <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
+      <button>Save to Spotify</button>
+    </div>
+  );
 }
 
 export default Playlist;

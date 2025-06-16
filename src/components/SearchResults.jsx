@@ -1,19 +1,13 @@
-import React from "react";
+import React from 'react';
+import TrackList from './Tracklist';
 
-function SearchResult({tracks}){
-
-    return(
-        <div>
-            <h1>Results</h1>
-            {tracks.map(track => (
-                <div>
-                    <Track key={track.id} track={track} />
-                    <button></button>
-                </div>
-            ))}
-
-        </div>
-    );
+function SearchResults({ tracks }) {
+  return (
+    <div className="SearchResults">
+      <h2>Results</h2>
+      <TrackList tracks={tracks} />
+    </div>
+  );
 }
 
-export default SearchResult;
+export default SearchResults;

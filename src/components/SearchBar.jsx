@@ -1,14 +1,11 @@
 import React from "react";
 
-function SearchBar(){
+function SearchBar({userInput, handleUserInput}){
 
     return(
         <div>
             <h1>SearchBar</h1>
-            <form action="">
-                <label>Song Name:</label>
-                <input type="search" name="searchInput" id="si" incremental={true} />
-            </form>
+            <input type="text" name="searchInput" id="searchInput" value={userInput} onChange={handleUserInput}  />
         </div>
     );
 }

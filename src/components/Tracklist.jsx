@@ -1,12 +1,19 @@
-import React from "react";
+import React from 'react';
+import Track from './Track';
 
-function Tracklist(){
-
-    return(
-        <div>
-
-        </div>
-    );
+function TrackList({ tracks, onRemove, isRemoval }) {
+  return (
+    <div className="TrackList">
+      {tracks.map(track => (
+        <Track
+          key={track.id}
+          track={track}
+          onRemove={onRemove}
+          isRemoval={isRemoval}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default Tracklist;
+export default TrackList;
