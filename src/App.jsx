@@ -2,24 +2,22 @@ import React, {useState} from 'react';
 //import { useState } from 'react'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
+import Spotify from './Auth/Spotify';
 import './App.css'
-import { testData } from './test_data/Songlist_test_data';
+//import { testData } from './test_data/Songlist_test_data';
 import SearchBar from './components/SearchBar'
 import SearchResult from './components/SearchResults';
 import Playlist from './components/Playlist';
 function App() {
-  const [searchResults, setSearchResults] = useState(testData);
+  const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlist, setPlaylist] = useState([])
 
-  const filterItems = (input) => {
-    setSearchResults((prev) => {
-      if(input===null || input==='')
-        return testData;
-      else
-        return prev.filter((item) => (item.name === input || item.album === input || item.artist === input));
-    });
-  };
+  const search = (term) => {
+  Spotify.search(term).then(results => {
+    setSearchResults(results);
+  });
+};
   function changePlaylistName (input) {
     setPlaylistName(input);
   };
@@ -42,7 +40,7 @@ function App() {
 
   return (
     <>
-      <SearchBar onSearch={filterItems}/>
+      <SearchBar onSearch={search}/>
       <div style={{display:'inline'}}>
         <div>
           <SearchResult tracks={searchResults}  
