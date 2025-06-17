@@ -17,6 +17,7 @@ function App() {
   Spotify.search(term).then(results => {
     setSearchResults(results);
   });
+  console.log('Access token:', Spotify.getAccessToken());
 };
   function changePlaylistName (input) {
     setPlaylistName(input);
