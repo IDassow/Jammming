@@ -11,41 +11,51 @@ function App() {
   const [searchResults, setSearchResults] = useState(testData);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlist, setPlaylist] = useState([])
-  const [userInput, setUserInput] = useState('');
-  function handleUserInput(e) {
-    setUserInput(e.target.value);
-    filterItems(userInput);
-  }
+
   const filterItems = (input) => {
     setSearchResults((prev) => {
-      return prev.filter((item) => (item.name === input || item.album === input || item.artist === input));
+      if(input===null || input==='')
+        return testData;
+      else
+        return prev.filter((item) => (item.name === input || item.album === input || item.artist === input));
     });
   };
-  const changePlaylistName = (input) => {
-    setPlaylistName(() => {
-       input;
-    });
+  function changePlaylistName (input) {
+    setPlaylistName(input);
   };
 
   const addTrack = (track) => {
     // Prevent duplicates
-    if (playlist.find(t => t.id === track.id)) return;
-    setPlaylist(prev => [...prev, track]);
+    if (playlist.find(t => t.id === track.id))
+       return false;
+    else{
+      setPlaylist(prev => [...prev, track]);
+      return true;
+    }
+    
   };
 
   const removeTrack = (track) => {
     setPlaylist(prev => prev.filter(t => t.id !== track.id));
   };
 
+
   return (
     <>
-      <SearchBar value={userInput} onChange={handleUserInput}/>
-      <div style={{display:'inlineFlex'}}>
-        <SearchResult tracks={searchResults}  onAdd={addTrack}/>
-        <Playlist playlistName={playlistName} 
+      <SearchBar onSearch={filterItems}/>
+      <div style={{display:'inline'}}>
+        <div>
+          <SearchResult tracks={searchResults}  
+            onAdd={addTrack}
+            />
+        </div>
+        <div>
+          <Playlist playlistName={playlistName} 
           changeName={changePlaylistName}
           playlistTracks={playlist}
           onRemove={removeTrack}/>
+        </div>
+        
       </div>
     </>
   )

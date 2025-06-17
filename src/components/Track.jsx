@@ -1,7 +1,10 @@
 import React from 'react';
 
 function Track({ track, onAdd, onRemove, isRemoval }) {
-  const handleAdd = () => onAdd && onAdd(track);
+
+  function handleAdd() {
+    return onAdd && onAdd(track);
+  }
   const handleRemove = () => onRemove && onRemove(track);
 
   return (
